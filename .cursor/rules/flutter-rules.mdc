@@ -1,0 +1,172 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Flutter Development Rules
+
+You are an expert in Dart, Flutter, Bloc/Cubit, GoRouter, and Mobile UI development.
+
+---
+
+## Code Style and Structure
+
+- Write clean, technical Dart code with concise, readable examples.
+- Use a **feature-first folder structure** with simple clean architecture
+- Prefer composition over inheritance and modularization over duplication.
+- Use pure functions and stateless widgets where possible.
+- Avoid placing business logic in the UI layer; use Cubits or Blocs.
+- Extract subcomponents and helper methods to keep widgets lean.
+- Use `freezed`, `json_serializable`, and `build_runner` to reduce boilerplate.
+- Use `get_it` for dependency injection to decouple services and features.
+- Use `const` constructors as much as possible for performance.
+
+---
+
+## Naming Conventions
+
+- Use `snake_case` for file and directory names (e.g., `auth_cubit.dart`, `login_screen.dart`).
+- Use `PascalCase` for class names, `camelCase` for variables and methods.
+- Suffix Cubits and Blocs with `_cubit` or `_bloc`, states with `_state`.
+- Name widgets descriptively: `PrimaryButton`, `LoginForm`.
+
+---
+
+## Dart & Freezed Usage
+
+- Use Dart's null safety strictly and avoid nullable variables unless required.
+- Use `freezed` for immutable data classes and union types.
+- Use `json_serializable` for model serialization.
+- Avoid using enums; prefer maps or sealed classes with `freezed`.
+
+---
+
+## Syntax and Formatting
+
+- Follow Dart formatting conventions using `flutter format` or IDE settings.
+- Use arrow syntax for short functions and lambdas.
+- Use concise conditionals and avoid deeply nested logic; prefer early returns.
+- Follow clean architecture separation between UI, domain, and data.
+
+---
+
+## UI and Styling
+
+- Build responsive UIs using `LayoutBuilder`, `MediaQuery`, or `Flex`/`Expanded`.
+- Avoid custom or desktop-specific UI handling unless explicitly needed.
+- Extract reusable UI widgets to feature-level or shared `core/widgets/`.
+
+---
+
+## Safe Area Management
+
+- Use `SafeArea` in top-level scaffold or screens where needed.
+- Avoid hardcoded paddings for safe areas; rely on `SafeArea` and `MediaQuery`.
+- Wrap scrollable content in `SafeArea` + `SingleChildScrollView` as needed.
+
+---
+
+## Performance Optimization
+
+- Use `const` constructors to reduce widget rebuilds.
+- Use `BlocSelector`, `Builder`, and conditional rebuild logic for performance.
+- Memoize expensive computations using local caching or state-level memory.
+- Avoid rebuilding large trees unnecessarily; split into smaller widgets.
+
+---
+
+## Navigation
+
+- Use `go_router` for routing and deep linking.
+- Leverage named routes, redirections, and guards for auth or onboarding flows.
+- Avoid inline navigation logic; extract to route configuration files.
+- Use `context.go`, `context.push`, and dynamic route parameters cleanly.
+- Structure navigation per feature if needed.
+
+---
+
+## State Management
+
+- Use `flutter_bloc` and `Cubit` for local and global state:
+- Use `Cubit` for simple, synchronous state.
+- Use `Bloc` for asynchronous flows or complex coordination.
+- Separate UI and state logic strictly.
+- Prefer `BlocBuilder`, `BlocSelector`, and `BlocListener` for rebuilding and reacting.
+- Use `hydrated_bloc` for persistence when needed.
+
+---
+
+## Dependency Injection
+
+- Use `get_it` to manage global services and feature-level dependencies.
+- Register all services and Cubits in a centralized `service_locator.dart`.
+- Keep registration and teardown clean and testable.
+
+---
+
+## Error Handling and Validation
+
+- Validate API and model data using `freezed` defaults or custom validators.
+- Use `try/catch` around all async operations in Cubits/Blocs.
+- Emit failure states and handle gracefully in the UI.
+- Prefer early returns for error branches; avoid nested `if`-`else`.
+- Consider integrating Sentry or Firebase Crashlytics for production monitoring.
+
+---
+
+## Testing
+
+- Write **unit tests** for Cubits and Blocs using `bloc_test`.
+- Write **widget tests** using `flutter_test` and `mocktail`.
+- Organize tests in `test/features/feature_name/` following the `lib/` structure.
+- Ensure all logic and UI tests cover error and edge cases.
+- Write integration tests for navigation and user flows with `integration_test`.
+
+---
+
+## Security
+
+- Store sensitive data using secure storage methods like `flutter_secure_storage`.
+- Always communicate over HTTPS.
+- Sanitize inputs and validate all user-supplied data.
+- Use environment variables or `.env` for secrets and keys (e.g., via `flutter_dotenv`).
+
+---
+
+## Internationalization (i18n)
+
+- Use Flutter’s built-in `flutter_localizations` and the `intl` package.
+- Support RTL languages where needed.
+- Ensure scalable text and accessibility properties for all widgets.
+- Place translations in `l10n` or `assets/i18n`.
+
+---
+
+## Key Conventions
+
+1. Use `flutter_bloc`, `freezed`, `get_it`, and `go_router` as core stack.
+2. Organize code by feature; avoid bloated global architecture.
+3. Write testable, modular code with strong separation of concerns.
+4. Prioritize performance with `const`, memoization, and rebuild optimization.
+5. Use clean navigation flows and state patterns.
+6. Follow null safety and avoid runtime errors.
+7. Always write meaningful tests and handle errors clearly.
+
+---
+
+## API Documentation
+
+- Refer to the official Flutter documentation for best practices:  
+https://docs.flutter.dev
+
+- Refer to the Bloc library documentation for advanced usage:  
+https://bloclibrary.dev
+
+- GoRouter best practices:  
+https://pub.dev/packages/go_router
+
+- Freezed documentation:  
+https://pub.dev/packages/freezed
+
+
+
