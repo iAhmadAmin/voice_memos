@@ -111,6 +111,12 @@ class AudioService {
   }
 
   Future<void> playRecording(String filePath) async {
+    // Validate file exists before attempting to play
+    final file = File(filePath);
+    if (!await file.exists()) {
+      throw Exception('Audio file not found: $filePath');
+    }
+
     await _player.play(DeviceFileSource(filePath));
     _recordingStateController.add(const AudioRecordingState.playing());
 

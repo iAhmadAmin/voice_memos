@@ -45,10 +45,6 @@ class VoiceMemosApp extends StatelessWidget {
             foregroundColor: Colors.black,
             elevation: 0,
           ),
-          floatingActionButtonTheme: const FloatingActionButtonThemeData(
-            backgroundColor: Colors.red,
-            foregroundColor: Colors.white,
-          ),
         ),
         home: const HomeScreen(),
       ),
